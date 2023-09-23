@@ -49,7 +49,7 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-scroll-reveal',
+      resolve: 'gatsby-plugin-scroll-reveal-with-new-react',
       options: {
         threshold: 0.1,
       },
