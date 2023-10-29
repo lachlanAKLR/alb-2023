@@ -75,13 +75,13 @@ const ContactStyles = styled.div`
   }
 `;
 
-export const Head = () => (
+export const Head = ({ data }) => (
   <>
-    <title>A.L.B Accounting — Contact Us</title>
-    <meta name="description" content="Clarity in the Numbers" />
-    <meta property="og:title" content="A.L.B Accounting" />
+    <title>{data.content.titleTag}</title>
+    <meta name="description" content={data.content.metaText} />
+    <meta property="og:title" content={data.content.titleTag} />
     <meta property="og:type" content="article" />
-    <meta property="og:description" content="Clarity in the Numbers" />
+    <meta property="og:description" content={data.content.metaText} />
     <meta
       property="og:image"
       content="https://i.ibb.co/YTj1KXD/ALB-twitter-card.png"
@@ -152,6 +152,8 @@ export const query = graphql`
       email
       phone
       instagram
+      metaText
+      titleTag
     }
   }
 `;

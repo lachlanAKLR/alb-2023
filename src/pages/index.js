@@ -42,13 +42,13 @@ const HomeStyles = styled.div`
   }
 `;
 
-export const Head = () => (
+export const Head = ({ data }) => (
   <>
-    <title>A.L.B Accounting</title>
-    <meta name="description" content="Clarity in the Numbers" />
-    <meta property="og:title" content="A.L.B Accounting" />
+    <title>{data.homeContent.titleTag}</title>
+    <meta name="description" content={data.homeContent.metaText} />
+    <meta property="og:title" content={data.homeContent.titleTag} />
     <meta property="og:type" content="article" />
-    <meta property="og:description" content="Clarity in the Numbers" />
+    <meta property="og:description" content={data.homeContent.metaText} />
     <meta
       property="og:image"
       content="https://i.ibb.co/YTj1KXD/ALB-twitter-card.png"
@@ -60,9 +60,12 @@ export const Head = () => (
 export default function HomePage({ data }) {
   const { homeContent } = data;
   const { heroImage } = homeContent;
+  const { heroImageTag } = homeContent;
   const { services } = data;
   const { journals } = data;
   const serviceImage = data.sanityServicesPage.image.asset;
+
+  console.log(homeContent.metaText);
 
   return (
     <>
@@ -81,7 +84,7 @@ export default function HomePage({ data }) {
                 <Logo />
               </div>
             </div>
-            <HeroImage heroImage={heroImage} />
+            <HeroImage heroImage={heroImage} heroImageTag={heroImageTag} />
             <HeroText homeContent={homeContent} />
             <ServiceScrollBox services={services} serviceImage={serviceImage} />
             <ResourceCTA />
@@ -107,6 +110,9 @@ export const query = graphql`
       subhead
       link
       linkText
+      metaText
+      titleTag
+      heroImageTag
     }
     services: allSanityServices {
       nodes {

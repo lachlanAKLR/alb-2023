@@ -11,7 +11,7 @@ export default function JournalThumb({ journal }) {
         <Link to={`/journal/${journal.slug.current}`}>
           <GatsbyImage
             image={journal.image.asset.gatsbyImageData}
-            alt={`image of ${journal.title}`}
+            alt={journal.imageTag}
           />
         </Link>
         <div className="journal-item__text">

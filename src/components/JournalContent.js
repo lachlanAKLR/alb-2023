@@ -110,7 +110,7 @@ export default function JournalContent({ journal }) {
           <div className="image__wrapper">
             <GatsbyImage
               image={journal.image.asset.gatsbyImageData}
-              alt={journal.title}
+              alt={journal.imageTag}
             />
           </div>
           <div className="text__wrapper">

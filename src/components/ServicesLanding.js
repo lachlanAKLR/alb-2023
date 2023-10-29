@@ -69,7 +69,7 @@ export default function ServicesLanding({ content }) {
           <div className="column">
             <GatsbyImage
               image={content.image.asset.gatsbyImageData}
-              alt="services image"
+              alt={content.imageTag}
             />
           </div>
         </div>

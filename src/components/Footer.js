@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import { StaticImage } from 'gatsby-plugin-image';
+import { Link } from 'gatsby';
 import Logo from '../images/ALB_logo.svg';
 
 const FooterStyles = styled.div`
   .footer__inner {
-    padding: 100px 30px 60px 30px;
+    padding: 100px 30px 40px 30px;
     height: 100vh;
     min-height: 800px;
     width: 100%;
@@ -42,6 +43,17 @@ const FooterStyles = styled.div`
   .gatsby-image-wrapper {
     width: 100px;
     margin-bottom: 15px;
+  }
+
+  .footer__tertiary {
+    padding: 0 30px 15px 30px;
+    display: flex;
+  }
+
+  .footer__tertiary h4 {
+    opacity: 40%;
+    font-size: 12px;
+    margin-right: 20px;
   }
 
   @media only screen and (max-width: 1100px) {
@@ -81,6 +93,13 @@ const FooterStyles = styled.div`
       width: 105px;
       height: 45px;
     }
+    .footer__tertiary {
+      padding: 0 20px 15px 20px;
+    }
+
+    .footer__column:nth-child(3) {
+      padding-bottom: 20px;
+    }
   }
 `;
 
@@ -108,7 +127,6 @@ export default function Footer() {
                     Frankston, Vic, <br />
                     3199 abn 77 663 504 327
                     <br />
-                    {'  '} <br />
                   </h4>
                 </div>
                 <div className="footer__column">
@@ -149,9 +167,6 @@ export default function Footer() {
                     >
                       aklr
                     </a>
-                    {'  '} <br />
-                    {'  '} <br />
-                    {'  '} <br />
                   </h4>
                 </div>
                 <div className="footer__column">
@@ -180,6 +195,14 @@ export default function Footer() {
                 </div>
               </div>
             </div>
+          </div>
+          <div className="footer__tertiary">
+            <h4>
+              <Link to="/privacy">Privacy</Link>
+            </h4>
+            <h4>
+              <Link to="/terms">Terms & Conditions</Link>
+            </h4>
           </div>
         </div>
       </FooterStyles>

@@ -23,7 +23,7 @@ const HeroImageStyles = styled.div`
   }
 `;
 
-export default function HeroImage({ heroImage }) {
+export default function HeroImage({ heroImage, heroImageTag }) {
   return (
     <HeroImageStyles>
       <div
@@ -35,7 +35,7 @@ export default function HeroImage({ heroImage }) {
         <div className="hero__image-inner">
           <GatsbyImage
             image={heroImage.asset.gatsbyImageData}
-            alt="home image"
+            alt={heroImageTag}
           />
         </div>
       </div>

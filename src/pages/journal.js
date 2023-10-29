@@ -32,6 +32,9 @@ const JournalStyles = styled.div`
     .page__title {
       padding: 60px 0 25px 0;
     }
+    .site__grid {
+      display: block;
+    }
   }
 `;
 
@@ -86,6 +89,9 @@ export const query = graphql`
         }
         large
         title
+        imageTag
+        metaText
+        titleTag
         _rawJournalArticle
         slug {
           current
