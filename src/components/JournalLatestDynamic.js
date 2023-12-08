@@ -44,7 +44,7 @@ const JournalLatestStyles = styled.div`
   }
   .gatsby-image-wrapper {
     border-radius: 30px;
-    min-height: 250px;
+    aspect-ratio: 5 / 4;
   }
 
   .mobile__carousel {
@@ -76,7 +76,6 @@ const JournalLatestStyles = styled.div`
     }
     .gatsby-image-wrapper {
       border-radius: 10px;
-      min-height: 250px;
     }
 
     h3 {
