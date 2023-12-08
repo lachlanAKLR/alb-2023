@@ -56,7 +56,6 @@ const JournalContentStyles = styled.div`
   .back__button {
     position: sticky;
     top: 80px;
-    left: 70px;
     height: fit-content;
     padding-top: 30px;
     grid-column: span 3;
