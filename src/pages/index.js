@@ -13,6 +13,7 @@ import ServiceScrollBox from '../components/ServiceScrollBox';
 import GlobalCTA from '../components/GlobalCTA';
 import ResourceCTA from '../components/ResourceCTA';
 import JournalLatest from '../components/JournalLatest';
+import JournalLatestDynamic from '../components/JournalLatestDynamic';
 
 const HomeStyles = styled.div`
   .home__wrapper {
@@ -64,8 +65,7 @@ export default function HomePage({ data }) {
   const { services } = data;
   const { journals } = data;
   const serviceImage = data.sanityServicesPage.image.asset;
-
-  console.log(homeContent.metaText);
+  const featuredJournals = homeContent.featuredJournal;
 
   return (
     <>
@@ -88,7 +88,8 @@ export default function HomePage({ data }) {
             <HeroText homeContent={homeContent} />
             <ServiceScrollBox services={services} serviceImage={serviceImage} />
             <ResourceCTA />
-            <JournalLatest journals={journals} />
+            {/* <JournalLatest journals={journals} /> */}
+            <JournalLatestDynamic journals={featuredJournals} />
             <GlobalCTA />
           </div>
         </div>
@@ -113,6 +114,19 @@ export const query = graphql`
       metaText
       titleTag
       heroImageTag
+      featuredJournal {
+        _id
+        _key
+        image {
+          asset {
+            gatsbyImageData
+          }
+        }
+        slug {
+          current
+        }
+        title
+      }
     }
     services: allSanityServices {
       nodes {
