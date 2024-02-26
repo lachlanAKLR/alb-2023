@@ -1,8 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
-import { GatsbyImage } from 'gatsby-plugin-image';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import { PortableText } from '@portabletext/react';
 import { Link } from 'gatsby';
+import imageUrlBuilder from '@sanity/image-url';
+import sanityConfig from '../lib/sanityConfig';
+
+const builder = imageUrlBuilder(sanityConfig);
+
+function urlFor(source) {
+  return builder.image(source);
+}
 
 const JournalContentStyles = styled.div`
   .content__wrapper {
@@ -11,6 +19,16 @@ const JournalContentStyles = styled.div`
 
   .page__title {
     padding: 150px 0 90px 0;
+  }
+
+  ul {
+    margin-left: 20px;
+  }
+
+  li {
+    list-style: disc !important;
+    list-style-position: inside;
+    padding-left: 5px;
   }
 
   .content__inner {
@@ -61,6 +79,25 @@ const JournalContentStyles = styled.div`
     grid-column: span 3;
   }
 
+  .iframe-container_wrapper {
+    padding: 30px 0 30px 0;
+  }
+
+  .iframe-container {
+    width: 100%; /* Full width of the parent container */
+    height: 0; /* Initially set to 0 */
+    padding-bottom: 56.25%; /* Aspect ratio for 16:9 videos */
+    position: relative;
+  }
+
+  .iframe-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
   @media only screen and (max-width: 1100px) {
     .content__wrapper {
       padding: 40px 20px;
@@ -87,6 +124,51 @@ const JournalContentStyles = styled.div`
     }
   }
 `;
+
+const serializers = {
+  types: {
+    image: (props) => {
+      const asset = props.value.asset._ref;
+      const imageUrl = urlFor(asset).url();
+
+      return (
+        <div
+          style={{
+            maxWidth: '100%',
+            paddingTop: '30px',
+            paddingBottom: '30px',
+          }}
+        >
+          <img
+            src={imageUrl}
+            alt=""
+            style={{
+              maxWidth: '100%',
+              borderRadius: '30px', // Apply border radius to the image
+            }}
+          />
+        </div>
+      );
+    },
+    videoLink: (props) => {
+      const videoUrl = props.value.url;
+
+      return (
+        <div className="iframe-container_wrapper">
+          <div className="iframe-container">
+            <iframe
+              src={videoUrl}
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            />
+          </div>
+        </div>
+      );
+    },
+  },
+};
 
 export default function JournalContent({ journal }) {
   return (
@@ -115,7 +197,10 @@ export default function JournalContent({ journal }) {
             />
           </div>
           <div className="text__wrapper">
-            <PortableText value={journal._rawJournalArticle} />
+            <PortableText
+              value={journal._rawJournalArticle}
+              components={serializers}
+            />
           </div>
           <Link to="/contact">
             <button type="button" className="btn-pill mist">

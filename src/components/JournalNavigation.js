@@ -21,6 +21,7 @@ const JournalNavigationStyles = styled.div`
 
   .gatsby-image-wrapper {
     border-radius: 30px;
+    aspect-ratio: 5 / 4;
   }
 
   .journal-item {

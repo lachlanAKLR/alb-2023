@@ -55,6 +55,7 @@ export const Head = () => (
 
 export default function Journal({ data }) {
   const { journals } = data;
+
   return (
     <JournalStyles>
       <GlobalStyles />

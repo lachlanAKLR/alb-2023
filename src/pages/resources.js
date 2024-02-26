@@ -29,6 +29,7 @@ const ResourcesStyles = styled.div`
   }
 
   .resource {
+    width: 100%;
     border-top: 1px solid var(--grey);
     padding-top: 30px;
     grid-column-start: 2;
@@ -141,7 +142,7 @@ export default function ResourcesPage({ data }) {
 
 export const query = graphql`
   query {
-    resources: allSanityResource {
+    resources: allSanityResource(sort: [{ order: ASC }]) {
       nodes {
         title
         resources {
