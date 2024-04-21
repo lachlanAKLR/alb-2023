@@ -133,7 +133,7 @@ export default function ContactTemplate({ data }) {
           </div>
           <div className="detail">
             <h4>social</h4>
-            <a href={content.instagram}>
+            <a href={content.instagram} target="blank">
               <h5>LinkedIn</h5>
             </a>
           </div>
