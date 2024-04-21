@@ -134,7 +134,7 @@ export default function ContactTemplate({ data }) {
           <div className="detail">
             <h4>social</h4>
             <a href={content.instagram}>
-              <h5>Instagram</h5>
+              <h5>LinkedIn</h5>
             </a>
           </div>
         </div>

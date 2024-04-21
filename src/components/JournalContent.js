@@ -84,9 +84,9 @@ const JournalContentStyles = styled.div`
   }
 
   .iframe-container {
-    width: 100%; /* Full width of the parent container */
-    height: 0; /* Initially set to 0 */
-    padding-bottom: 56.25%; /* Aspect ratio for 16:9 videos */
+    width: 100%; 
+    height: 0;
+    padding-bottom: 56.25%;
     position: relative;
   }
 
@@ -144,12 +144,13 @@ const serializers = {
             alt=""
             style={{
               maxWidth: '100%',
-              borderRadius: '30px', // Apply border radius to the image
+              borderRadius: '30px', 
             }}
           />
         </div>
       );
     },
+
     videoLink: (props) => {
       const videoUrl = props.value.url;
 
